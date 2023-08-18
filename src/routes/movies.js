@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.json(updatedMovie);
+        res.statusCode(200).json(updatedMovie);
     }
     catch (e) {res.status(400).json({ message: e.message })};
 });
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
 router.patch('/:id', async (req, res) => {
     try {
         const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.json(updatedMovie);
+        res.statusCode(200).json(updatedMovie);
     }
     catch (e) {res.status(400).json({ message: e.message })};
 });
@@ -65,7 +65,7 @@ router.patch('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         await Movie.findByIdAndDelete(req.params.id);
-        res.json({ message: 'Movie has been deleted' });
+        res.statusCode(200).json({ message: 'Movie has been deleted' });
     }
     catch (e) {res.status(500).json({ message: e.message })};
 });
